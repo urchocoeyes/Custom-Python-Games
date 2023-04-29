@@ -1,4 +1,5 @@
 import pygame
+
 pygame.init()
 
 songs = [
@@ -16,10 +17,12 @@ screen.fill((0, 255, 255))
 running = True
 i = 0
 
+
 def playing_music(i):
     # pygame.mixer.music.set_endevent(SONG_END)
     pygame.mixer.music.load(songs[i])
     pygame.mixer.music.play(0)
+
 
 while running:
     for event in pygame.event.get():

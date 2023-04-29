@@ -27,8 +27,8 @@ while running:
     seconds_now = time_now.second
     minutes_now = time_now.minute
 
-    image_seconds_rotation = pygame.transform.rotate(image_seconds, 135 - seconds_now * 6)
-    image_minutes_rotation = pygame.transform.rotate(image_minutes, 135 - minutes_now * 6)
+    image_seconds_rotation = pygame.transform.rotate(image_seconds, 135 + seconds_now * 6)
+    image_minutes_rotation = pygame.transform.rotate(image_minutes, 135 + minutes_now * 6)
 
     def_image_seconds_rotation_center = image_seconds_rotation.get_rect().center
     def_image_minutes_rotation_center = image_minutes_rotation.get_rect().center

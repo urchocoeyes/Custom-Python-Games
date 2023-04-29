@@ -141,7 +141,7 @@ def main():
 
     while running:
         SCREEN.fill(WHITE)
-        if counter >= 40 and counter <= 50 and isDraw: # counter = timer when timer = 40: there appear grey block
+        if counter >= 40 and counter <= 50 and isDraw:  # counter = timer when timer = 40: there appear grey block
             superFood.draw()
             is_drawn = True
         score_text = score_font.render(f" Your score: {score}", True, (0, 0, 0))
@@ -184,7 +184,7 @@ def main():
                     isLeft = True
 
         snake.move(dx, dy)
-        if snake.check_wall():
+        if snake.check_wall(): # ударился body к head
             running = False
         if snake.check_collision(food):
             snake.body.append(Point(snake.body[-1].x, snake.body[-1].y))

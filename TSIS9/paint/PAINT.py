@@ -37,7 +37,8 @@ class Button:
 
 
 class Pen(GameObject):
-    def __init__(self, ch_color, *args, **kwargs):
+    def __init__(self, ch_color, *args, **kwargs): #  function will receive a tuple of arguments, and can access the items accordingly:
+        # *args -->
         self.points = []  # [(x1, y1), (x2, y2)]
         self.ch_color = ch_color
 
@@ -89,7 +90,7 @@ class Rectangle(GameObject):
         self.end_pos = mouse_pos
 
 
-class rightTriangle(GameObject):
+class rightTriangle(GameObject): # 90 degrees
     def __init__(self, start_pos):
         self.start_pos = start_pos
         self.end_pos = start_pos
@@ -100,6 +101,10 @@ class rightTriangle(GameObject):
 
         end_pos_x = max(self.start_pos[0], self.end_pos[0])
         end_pos_y = max(self.start_pos[1], self.end_pos[1])
+
+        print(start_pos_x, start_pos_y)
+        print(end_pos_x, end_pos_y)
+
 
         pygame.draw.polygon(
             SCREEN,
@@ -122,7 +127,7 @@ class equilateralTriangle(GameObject):  # triangle triangle triangle
         self.end_pos = start_pos
 
     def draw(self):
-        # print(self.start_pos, self.end_pos)
+        print(self.start_pos, self.end_pos)
         start_pos_x = min(self.start_pos[0], self.end_pos[0])
         start_pos_y = min(self.start_pos[1], self.end_pos[1])
 
@@ -276,11 +281,11 @@ def main():
                 if button.rect.collidepoint(
                         pygame.mouse.get_pos()):  # если я нажимаю на эту кнопку текущий инструмент - прямоугольник
                     current_shape = 'rectangle'
-                    ch_color = WHITE
+                    # ch_color = WHITE
                 if buttonTr.rect.collidepoint(pygame.mouse.get_pos()):  # то же самое в других
                     current_shape = 'Trngl'
                 if buttonRightTr.rect.collidepoint(pygame.mouse.get_pos()):
-                    current_shape = 'eqRect'
+                    current_shape = 'eqRect' # eqTriang90
                 if buttonR.rect.collidepoint(pygame.mouse.get_pos()):
                     current_shape = 'Romb'
                 if buttonS.rect.collidepoint(pygame.mouse.get_pos()):
@@ -289,7 +294,7 @@ def main():
                     current_shape = 'Circle'
                 if buttonP.rect.collidepoint(pygame.mouse.get_pos()):
                     current_shape = 'pen'
-                    ch_color = WHITE
+                    # ch_color = WHITE
                 if buttonE.rect.collidepoint(pygame.mouse.get_pos()):
                     current_shape = 'eraser'
                     ch_color = (0, 0, 0)
@@ -320,6 +325,14 @@ def main():
             if event.type == pygame.MOUSEBUTTONUP and active_obj is not None:
                 objects.append(active_obj)  # когда мы опустим мышь мы добавляем готовый объект в objects
                 active_obj = None
+
+
+
+        # for buton in buttonss:
+        #     buton.draw()
+        # for obj in objects: # рисуем все объекты
+        #     obj.draw()
+
 
         for obj in objects:  # рисуем все объекты
             obj.draw()
